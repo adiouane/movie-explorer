@@ -1,5 +1,4 @@
 "use client";
-import { useState, useEffect } from 'react';
 import { usefetchPopularMovies, useSearchMovies } from '@/utils/apis/get-tv-movies';
 import Image from "next/image";
 import Hero from './hero';
@@ -15,6 +14,8 @@ import Loading from './loading';
 import Link from 'next/link';
 import { Button } from './button';
 import Footer from './footer';
+import { useState, useEffect, useCallback } from 'react';
+import debounce from 'lodash/debounce';
 
 /**
  * Functional component for the Streaming Platform Dashboard.
@@ -29,14 +30,21 @@ export default function StreamingPlatformDashboard() {
     const fetchPopularMovies = usefetchPopularMovies(page);
     const searchMovies = useSearchMovies(search, page);
 
+      // Create a debounced version of setSearch
+      const debouncedSetSearch = useCallback(
+        debounce((value) => {
+            setSearch(value);
+        }, 500),
+        []
+    );
+
     // Append new movies to the old list
     useEffect(() => {
         if (fetchPopularMovies.data?.data && !search) {
-            setMovies((prevMovies: any) => [...prevMovies, ...fetchPopularMovies?.data?.data] as any);
+            setMovies((prevMovies : any) => [...prevMovies, ...fetchPopularMovies?.data?.data] as any);
             setLoadingMore(false); // Reset loading state after data is fetched
         }
     }, [fetchPopularMovies.data]);
-    console.log("searchMovies -> searchMovies", searchMovies)
 
 
     // Search movies
@@ -61,7 +69,7 @@ export default function StreamingPlatformDashboard() {
 
     return (
         <div className="flex items-center justify-center 
-        bg-[#1A1A1A] text-white  overflow-x-hidden overflow-y-scroll md:p-20 rounded-lg sm:p-8">
+        bg-[#1A1A1A] text-white  md:p-20 rounded-lg sm:p-8">
             <main className='w-full'>
                 <Hero />
                 <div className="p-6 sm:p-8">
@@ -69,7 +77,7 @@ export default function StreamingPlatformDashboard() {
                         <h1 className="text-3xl font-semibold">Top watched Movies</h1>
                         <input
                             value={search}
-                            onChange={(e) => setSearch(e.target.value)}
+                            onChange={(e) => debouncedSetSearch(e.target.value)}
                             type="text"
                             placeholder="Search"
                             className="text-black font-bold text-xl p-2 bg-white sm:w-80 rounded-md mb-10 w-full"
@@ -87,7 +95,7 @@ export default function StreamingPlatformDashboard() {
                                             alt={Tv.title}
                                             className="rounded-md object-cover w-full h-96 sm:h-96 md:h-96 lg:h-96 xl:h-96 2xl:h-96
                                             "
-                                            loading='lazy'
+                                            loading='eager'
                                             width={500}
                                             height={750}
                                         />
@@ -124,7 +132,7 @@ export default function StreamingPlatformDashboard() {
                         ))}
                     </div>
                     {(fetchPopularMovies.isLoading || searchMovies.isLoading) && <Loading />}
-                    {searchMovies.data?.length === 0 && search && (
+                    { searchMovies.data?.length === 0 && search && (
                         <div className="flex justify-center items-center h-96 w-full
                         bg-[#1A1A1A] text-white">
                             <h1>No movies found</h1>
@@ -149,6 +157,7 @@ export default function StreamingPlatformDashboard() {
                 </div>
                 <Footer />
             </main>
+
         </div>
     );
 }
