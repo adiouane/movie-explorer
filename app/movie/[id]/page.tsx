@@ -25,7 +25,7 @@ export default function MovieDetails() {
   }
 
   return (
-      <div className='flex flex-row items-start justify-between h-screen w-screen'>
+      <div className='flex flex-row items-start justify-between h-screen w-screen overflow-x-hidden'>
 
           <div className="flex flex-row items-center justify-center justify-items-center gap-10 p-10 w-screen h-screen flex-wrap bg-[#1A1A1A] text-white ">
               <div>
