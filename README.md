@@ -1,86 +1,36 @@
----
-
-# Movie Explorer: A React 18 Application with Optimized Data Handling
-
-## Introduction
-
-Movie Explorer is a React 18 application built with TypeScript, TanStack Query V5, Axios, and optionally Next.js (for server-side rendering and routing). The app efficiently handles data fetching, caching, pagination, modal dialogs, and provides search functionality with debounce, all for an optimized user experience.
-
-## Features
-
-### Movies List Page
-- Fetches and displays popular movies from the TMDb API.
-- Implements scroll-down pagination for seamless loading.
-- Uses caching to avoid unnecessary network requests.
-
-### Movie Details Modal
-- Displays selected movie details in a modal.
-- Shows a loading state while fetching details.
-- Leverages cached data to avoid re-fetching on modal close.
-
-### Search Functionality
-- Search bar for movie titles with debounce for optimized API calls.
-- Displays search results within the movie list.
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
-1. **Clone the repository:**
-    ```bash
-    git clone https://github.com/adiouane/movie-explorer.git
-    ```
+First, run the development server:
 
-2. **Navigate to the project directory:**
-    ```bash
-    cd movie-explorer
-    ```
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-3. **Install dependencies:**
-    ```bash
-    npm install
-    ```
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-4. **Start the development server:**
-    ```bash
-    npm run dev
-    ```
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-5. **Access the application:**  
-   Open your browser and go to [http://localhost:3000](http://localhost:3000).
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Technology Stack
-- **React 18**
-- **TypeScript**
-- **TanStack Query V5**
-- **Axios**
-- **(Optional) Next.js** (for server-side rendering)
-- **Tailwind CSS** (for styling)
-- **ShadCN's Dialog** component (for modals)
+## Learn More
 
-## Usage
+To learn more about Next.js, take a look at the following resources:
 
-- Browse through the list of popular movies.
-- Click on a movie to view its details in a modal.
-- Use the search bar to find movies by title.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## Contributing
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-Contributions are welcome! Please follow these steps:
+## Deploy on Vercel
 
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Make your changes and commit them.
-4. Push your changes to your fork.
-5. Create a pull request to the main branch.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
-
-## Additional Notes
-- The application uses the TMDb API to fetch movie data. You will need to obtain an API key from TMDb to use this application.
-- Data fetching is efficiently handled using TanStack Query, with caching to reduce unnecessary network requests.
-- The search functionality includes debounce to prevent excessive API calls while typing.
-
----
-
-Enjoy exploring the world of movies!
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
