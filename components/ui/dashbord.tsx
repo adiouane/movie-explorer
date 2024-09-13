@@ -32,7 +32,7 @@ export default function StreamingPlatformDashboard() {
     // Append new movies to the old list
     useEffect(() => {
         if (fetchPopularMovies.data?.data && !search) {
-            setMovies((prevMovies : any) => [...prevMovies, ...fetchPopularMovies?.data?.data] as any);
+            setMovies((prevMovies: any) => [...prevMovies, ...fetchPopularMovies?.data?.data] as any);
             setLoadingMore(false); // Reset loading state after data is fetched
         }
     }, [fetchPopularMovies.data]);
@@ -124,7 +124,7 @@ export default function StreamingPlatformDashboard() {
                         ))}
                     </div>
                     {(fetchPopularMovies.isLoading || searchMovies.isLoading) && <Loading />}
-                    { searchMovies.data?.length === 0 && search && (
+                    {searchMovies.data?.length === 0 && search && (
                         <div className="flex justify-center items-center h-96 w-full
                         bg-[#1A1A1A] text-white">
                             <h1>No movies found</h1>
@@ -149,7 +149,6 @@ export default function StreamingPlatformDashboard() {
                 </div>
                 <Footer />
             </main>
-
         </div>
     );
 }
