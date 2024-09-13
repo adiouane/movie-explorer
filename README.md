@@ -1,4 +1,3 @@
-Here's a README for your project:
 
 ---
 
@@ -28,7 +27,7 @@ Movie Explorer is a React 18 application built with TypeScript, TanStack Query V
 
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/movie-explorer.git
+    git clone https://github.com/adiouane/movie-explorer.git
     ```
 
 2. **Navigate to the project directory:**
