@@ -1,15 +1,20 @@
 import React from 'react'
 import { Button } from './button'
 import { Play } from 'lucide-react'
+import Image from 'next/image'
 
 export default function Hero() {
     return (
         <>
             <div className="relative  overflow-hidden mb-8 p-2">
-                <img
+                <Image
                     src="/images/tvshow.jpg"
                     alt="tv show and movie explore"
                     className="w-full h-[550px] object-cover  rounded-xl"
+                    width={1920}
+                    height={1080}
+                    priority
+                    loading="eager"
                 />
                 <div className="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black to-transparent w-full">
                     <h1 className="font-bold mb-2 sm:text-6xl text-4xl max-w-[800px]" style={{ lineHeight: '1.3' }}>
